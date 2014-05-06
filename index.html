@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Points Within a Polygon</title>
+	<script type="text/javascript">
+		//JAVASCRIPT ALGORYTHM FOR DETERMINING IF A POINT FALLS WITHIN A POLYGON
+
+		// point: array [x,y]
+		// polygon: array of arrays [[x,y],[x,y],[x,y],[x,y],[x,y]]
+		// If the point is on the border of the polygon it will be registered as out
+		function withinPolygon( point, polygon ) {
+			var j = polygon.length - 1;
+			var odd = false;
+			var i;
+
+			for (i=0; i < polygon.length; i++) {
+				if ( (polygon[i][1] < point[1] && polygon[j][1]>= point[1]) || (polygon[j][1]< point[1] && polygon[i][1]>= point[1]) ) {
+					if ( polygon[i][0] + (point[1] - polygon[i][1])/(polygon[j][1]-polygon[i][1])*(polygon[j][0] - polygon[i][0] ) < point[0] ) {
+						odd =! odd;
+					}
+				}
+				j=i;
+			}
+
+			return odd;
+		}
+
+
+	</script>
+</head>
+<body>
+
+</body>
+</html>
